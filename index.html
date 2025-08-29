@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Daryl — Portfolio</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="style.css?v=2">
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="wrap nav" role="navigation" aria-label="Primary">
+      <a class="brand" href="#">
+        <div class="logo" aria-hidden="true"></div>
+        <span>Daryl · Portfolio</span>
+      </a>
+
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle navigation">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+
+      <nav id="navLinks" class="links" aria-label="Main links">
+        <a href="index.html">Home</a>
+        <a href="#resume">Resumé</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="grid">
+        <div>
+          <div class="kicker">Portfolio</div>
+          <h1>Tools, utilities, and learning apps built from imagination.</h1>
+          <p class="subtitle">
+            A curated hub of 14 projects: productivity tools, web utilities, learning aids, and creative demos—
+            all hosted for easy access.
+          </p>
+        </div>
+
+        <aside class="hero-card" aria-label="Quick highlights">
+          <p class="filter-label" style="margin-bottom:10px; color:var(--ink-soft); font-size:.98rem;">Filter by category:</p>
+          <div class="hero-list category-pills" id="project-filters">
+            <button class="pill" data-cat="productivity" type="button"><span class="dot"></span>Productivity</button>
+            <button class="pill" data-cat="utilities" type="button"><span class="dot"></span>Utilities</button>
+            <button class="pill" data-cat="learning" type="button"><span class="dot"></span>Learning</button>
+            <button class="pill" data-cat="fun" type="button"><span class="dot"></span>Fun</button>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured preview -->
+  <section class="section" id="projects" aria-labelledby="projects-title">
+    <div class="wrap">
+      <h2 id="projects-title">Featured Projects</h2>
+      <div class="cards">
+
+
+<article class="card" 
+  data-cat="productivity" 
+  data-tags="html css js resume builder frontend" 
+  data-link="https://darylmilanes.github.io/resume-builder/">
+  <h3>Resume Builder</h3>
+  <p class="meta">Web · HTML/CSS/JS</p>
+  <p class="desc">Generate clean resumes with export-ready templates.</p>
+  <div class="tags"><span class="tag">Front-end</span><span class="tag">Templates</span></div>
+  <div class="actions">
+    <a class="btn" href="https://darylmilanes.github.io/resume-builder/" target="_blank" rel="noopener">Live Preview</a>
+  </div>
+</article>
+
+<article class="card" data-cat="productivity" data-tags="pricing calculator proposal quotes">
+  <h3>Price Proposal Calculator</h3>
+  <p class="meta">Web · Calculator</p>
+  <p class="desc">Quickly produce professional price proposals with clear breakdowns.</p>
+  <div class="tags"><span class="tag">Calculator</span><span class="tag">UX</span></div>
+  <div class="actions">
+  </div>
+</article>
+<article class="card" data-cat="productivity" data-tags="search allocation zone lookup">
+  <h3>Zone Allocation Search</h3>
+  <p class="meta">Web · Search</p>
+  <p class="desc">Fast lookup tool for assigned zones/areas with clean results.</p>
+  <div class="tags"><span class="tag">Search</span><span class="tag">UI</span></div>
+  <div class="actions">
+  </div>
+</article>
+<article class="card" data-cat="productivity progress" data-tags="crm tickets filters table in-progress">
+  <h3>CRM</h3>
+  <span class="badge">In Progress</span>
+  <p class="meta">Web · Data tables</p>
+  <p class="desc">Lightweight CRM for ticket logging, filtering, and basic analytics.</p>
+  <div class="tags"><span class="tag">Tables</span><span class="tag">Filters</span></div>
+  <div class="actions">
+  </div>
+</article>
+<article class="card" data-cat="productivity progress" data-tags="expense tracker shared split in-progress">
+  <h3>Shared Expense Tracker</h3>
+  <span class="badge">In Progress</span>
+  <p class="meta">Web · Tracking</p>
+  <p class="desc">Collaborative tool for splitting and tracking shared expenses.</p>
+  <div class="tags"><span class="tag">Tracking</span><span class="tag">Charts</span></div>
+  <div class="actions">
+  </div>
+</article>
+<article class="card" data-cat="productivity" data-tags="grades student teacher averages localstorage">
+  <h3>Student Grades Tracker</h3>
+  <p class="meta">Web · LocalStorage</p>
+  <p class="desc">Record scores, compute averages, and keep data in the browser.</p>
+  <div class="tags"><span class="tag">LocalStorage</span><span class="tag">Education</span></div>
+  <div class="actions">
+  </div>
+</article>
+<article class="card" data-cat="utilities" data-tags="tinyurl api shortener clipboard">
+  <h3>Short Link (TinyURL API)</h3>
+  <p class="meta">API · JavaScript</p>
+  <p class="desc">Shorten URLs via TinyURL API with copy-to-clipboard and history.</p>
+  <div class="tags"><span class="tag">API</span><span class="tag">Clipboard</span></div>
+  <div class="actions">
+  </div>
+</article>
+<article class="card" data-cat="utilities" data-tags="qr code logo canvas">
+  <h3>QR Code Generator (with logo)</h3>
+  <p class="meta">Web · Canvas</p>
+  <p class="desc">Create branded QR codes for websites with logo overlay.</p>
+  <div class="tags"><span class="tag">Canvas</span><span class="tag">Branding</span></div>
+  <div class="actions">
+  </div>
+</article>
+<article class="card" data-cat="utilities" data-tags="qr code wifi login credentials">
+  <h3>QR Code Generator (login credentials)</h3>
+  <p class="meta">Web · Utility</p>
+  <p class="desc">Generate QR codes for Wi-Fi or app logins, ready to scan.</p>
+  <div class="tags"><span class="tag">Utility</span><span class="tag">QR</span></div>
+  <div class="actions">
+  </div>
+</article>
+<article class="card" data-cat="learning progress" data-tags="interview flashcards practice q&a in-progress">
+  <h3>Interview Prep Cards</h3>
+  <span class="badge">In Progress</span>
+  <p class="meta">Learning · Flashcards</p>
+  <p class="desc">Practice interviews with categorized flashcards and tips.</p>
+  <div class="tags"><span class="tag">Flashcards</span><span class="tag">Careers</span></div>
+  <div class="actions">
+  </div>
+</article>
+<article class="card" data-cat="learning" data-tags="vocabulary cards study shuffle localstorage">
+  <h3>Vocabulary Cards</h3>
+  <p class="meta">Learning · JavaScript</p>
+  <p class="desc">Interactive vocabulary flashcards with progress saved locally.</p>
+  <div class="tags"><span class="tag">Education</span><span class="tag">LocalStorage</span></div>
+  <div class="actions">
+  </div>
+</article>
+<article class="card" data-cat="learning" data-tags="pencil.plus communication toolkit learning site website">
+  <h3>pencil.plus</h3>
+  <p class="meta">Learning · Website</p>
+  <p class="desc">Communication training website featuring editions, collections, and presentations.</p>
+  <div class="tags"><span class="tag">Learning</span><span class="tag">Website</span></div>
+  <div class="actions">
+  </div>
+</article>
+<article class="card" data-cat="fun" data-tags="game show random picker prizes names">
+  <h3>Game Show App</h3>
+  <p class="meta">Web · Randomizer</p>
+  <p class="desc">Randomly picks names and prizes for an interactive game show.</p>
+  <div class="tags"><span class="tag">Randomizer</span><span class="tag">UI</span></div>
+  <div class="actions">
+  </div>
+</article>
+<article class="card" data-cat="fun learning" data-tags="letter trivia flip cards quiz education game">
+  <h3>Letter Trivia</h3>
+  <p class="meta">Fun · Learning</p>
+  <p class="desc">Pick a letter to reveal question cards; flip to see answers that all start with the chosen letter.</p>
+  <div class="tags"><span class="tag">Quiz</span><span class="tag">Cards</span></div>
+  <div class="actions">
+  </div>
+</article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="section" id="contact" aria-labelledby="contact-title">
+    <div class="wrap">
+      <h2 id="contact-title">Contact</h2>
+      <p class="meta">
+        Email: <a href="mailto:daryljohnmilanes@gmail.com">daryljohnmilanes@gmail.com</a> · 
+        Mobile: <a href="tel:+639692371267">+63&nbsp;969&nbsp;237&nbsp;1267</a> · 
+        GitHub: <a href="https://github.com/darylmilanes" target="_blank" rel="noopener">github.com/darylmilanes</a>
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      © <span id="y"></span> Daryl. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- External JS -->
+  <script src="script.js"></script>
+</body>
+</html>
