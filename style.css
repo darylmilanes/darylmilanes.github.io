@@ -123,81 +123,43 @@ footer{margin-top:20px; padding:28px 0 46px; border-top:1px solid rgba(0,0,0,.06
 @media (min-width: 1024px){
   .cards{grid-template-columns:repeat(3, 1fr);}
 }
-/* Default (desktop) shows inline */
+/* Contact: vertical stack + full-width buttons (desktop & mobile) */
 #contact .meta {
   display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
+  flex-direction: column;   /* always vertical */
+  gap: 0.6rem;
+  margin: 0;
 }
 
-/* On mobile, stack vertically */
-@media (max-width: 600px) {
-  #contact .meta {
-    flex-direction: column;
-    gap: 0.4rem;
-  }
-  /* Default (desktop) */
-#contact .meta {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
+#contact .meta .sep {
+  display: none;            /* hide the "·" separators */
 }
 
-/* Mobile: stack vertically and show as full-width buttons */
-@media (max-width: 600px) {
-  #contact .meta {
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-  }
-
-  #contact .meta a {
-    display: block;
-    width: 100%;
-    text-align: center;
-    padding: 12px;
-    background: var(--accent, #006666); /* fallback color */
-    color: #fff;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: 600;
-  }
-
-  /* Remove inline separator bullets */
-  #contact .meta {
-    list-style: none;
-  }
+#contact .meta a {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 12px;
+  background: var(--accent, #006666);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: var(--shadow);
 }
 
-}
-/* Default (desktop) */
-#contact .meta {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
+#contact .meta a:hover,
+#contact .meta a:focus-visible {
+  filter: brightness(1.06);
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
 }
 
-/* Mobile: stack vertically, buttons, remove bullets */
-@media (max-width: 600px) {
-  #contact .meta {
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-    list-style: none;   /* removes bullets */
-  }
-
-  #contact .meta a {
-    display: block;
-    width: 100%;
-    text-align: center;
-    padding: 12px;
-    background: var(--accent, #006666);
-    color: #fff;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: 600;
-  }
+/* Footer centered */
+footer .wrap {
+  text-align: center;
 }
+
 
 /* Footer centered on all screens */
 footer .wrap {
