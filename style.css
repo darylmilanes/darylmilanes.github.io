@@ -170,3 +170,36 @@ footer{margin-top:20px; padding:28px 0 46px; border-top:1px solid rgba(0,0,0,.06
 }
 
 }
+/* Default (desktop) */
+#contact .meta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Mobile: stack vertically, buttons, remove bullets */
+@media (max-width: 600px) {
+  #contact .meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    list-style: none;   /* removes bullets */
+  }
+
+  #contact .meta a {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+    background: var(--accent, #006666);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+  }
+}
+
+/* Footer centered on all screens */
+footer .wrap {
+  text-align: center;
+}
