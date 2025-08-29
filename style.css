@@ -123,3 +123,17 @@ footer{margin-top:20px; padding:28px 0 46px; border-top:1px solid rgba(0,0,0,.06
 @media (min-width: 1024px){
   .cards{grid-template-columns:repeat(3, 1fr);}
 }
+/* Default (desktop) shows inline */
+#contact .meta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* On mobile, stack vertically */
+@media (max-width: 600px) {
+  #contact .meta {
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+}
