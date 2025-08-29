@@ -159,9 +159,9 @@ footer{margin-top:20px; padding:28px 0 46px; border-top:1px solid rgba(0,0,0,.06
 footer .wrap {
   text-align: center;
 }
-
-
-/* Footer centered on all screens */
-footer .wrap {
-  text-align: center;
+@media (min-width: 760px) {
+  #contact .meta a {
+    max-width: 320px;   /* set the button width you want */
+    margin: 0;
+  }
 }
