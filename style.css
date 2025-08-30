@@ -85,7 +85,7 @@ h1{margin:.25rem 0 0; font-size:clamp(28px, 4vw, 42px); line-height:1.15;}
 .pill{
   display:flex; align-items:center; gap:10px;
   background:#fff; border:1px solid rgba(0,0,0,.06);
-  border-radius:14px; padding:10px 12px;
+  border-radius:14px; padding:10px 12px; font-size: 1rem;
 }
 .pill.active {
   background: var(--accent);
