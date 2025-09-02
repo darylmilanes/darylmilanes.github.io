@@ -100,3 +100,13 @@ projectCards.forEach(card => {
     });
   }
 });
+
+// Ensure page title is correct and re-apply if something else overrides it
+(function enforceTitle(){
+  var desired = "DARYL MILANES — Portfolio";
+  try{
+    document.title = desired;
+    window.addEventListener('load', function(){ document.title = desired; });
+    document.addEventListener('visibilitychange', function(){ if(!document.hidden) document.title = desired; });
+  }catch(e){/* ignore */}
+})();
