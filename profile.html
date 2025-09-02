@@ -4,6 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>DARYL JOHN MILANES — Profile</title>
+  <!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
@@ -14,20 +19,29 @@
         <span>DARYL JOHN MILANES</span>
       </a>
 
-      <nav class="links" aria-label="Main links">
-        <a href="index.html">Projects</a>
-        <a href="profile.html">Profile</a>
+      <!-- iOS-style segmented nav -->
+      <nav class="ios-nav" aria-label="Primary pages">
+        <div class="ios-segment" role="tablist" aria-label="Main">
+          <a href="index.html" class="ios-link" role="tab">Projects</a>
+          <a href="profile.html" class="ios-link" role="tab">Profile</a>
+          <div class="ios-indicator" aria-hidden="true"></div>
+        </div>
       </nav>
     </div>
   </header>
+
+  <!-- Mobile-only simple nav buttons (appear below header on small screens) -->
+  <div class="mobile-nav-buttons" aria-hidden="false">
+    <a class="mobile-btn" href="index.html">Projects</a>
+    <a class="mobile-btn" href="profile.html">Profile</a>
+  </div>
 
   <main class="section">
     <div class="wrap">
       <div class="profile-grid">
         <aside class="profile-left">
           <h1>Education Specialist</h1>
-          <p class="meta contact-meta">Malvar, Batangas · <a href="mailto:daryljohnmilanes@gmail.com">daryljohnmilanes@gmail.com</a> · <a href="tel:+639692371267">+63‑969‑237‑1267</a></p>
-
+          <p>Experienced education professional with a strong background in program coordination, curriculum development, and teaching across various educational levels. Committed to enhancing learning experiences and outcomes through innovative strategies and collaborative approaches.</p>
           <h2>Key Skills & Expertise</h2>
           <ul>
             <li>Program & Curriculum Development</li>
@@ -159,5 +173,6 @@
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
+  <script src="script.js"></script>
 </body>
 </html>
