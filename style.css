@@ -57,10 +57,39 @@ header{
 }
 .links a:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
 
-/* Mobile menu button */
-.menu-btn{display:none; border:0; background:transparent; padding:10px; border-radius:12px}
+/* Ensure menu button is visible on all viewports and style it */
+.menu-btn{display:inline-flex; align-items:center; justify-content:center; border:0; background:transparent; padding:10px; border-radius:12px; cursor:pointer}
+.menu-btn .bar{background:var(--ink);}
 .menu-btn:focus-visible{outline:2px solid var(--accent)}
-.bar{display:block; width:22px; height:2px; background:var(--ink); margin:5px 0; border-radius:2px}
+
+/* Show text label on mobile, hide bars; inverse on desktop */
+.menu-btn .bars{ display:inline-flex; gap:4px; }
+.menu-btn .menu-label{ display:none; margin-left:8px; font-weight:700 }
+
+@media (max-width:980px){
+  .menu-btn .bars{ display:none }
+  .menu-btn .menu-label{ display:inline-block; color:#fff }
+}
+
+/* Mobile: ensure burger is visible at the right of the header and teal */
+@media (max-width:980px){
+  .menu-btn{
+    display:inline-flex !important;
+    margin-left:auto; /* pushes button to the right within the header flex row */
+    background:var(--accent);
+    color:#fff;
+    padding:8px;
+    border-radius:12px;
+    z-index:75;
+    box-shadow:0 6px 18px rgba(0,0,0,.08);
+  }
+  .menu-btn .bar{ background:#fff; }
+}
+
+/* Default mobile behaviour: hide inline links until menu opened */
+@media (max-width:980px){
+  .links{ display:none; }
+}
 
 /* Hero */
 .hero{padding:48px 0 28px;}
@@ -119,6 +148,17 @@ h1{margin:.25rem 0 0; font-size:clamp(28px, 4vw, 42px); line-height:1.15;}
 
 /* Footer */
 footer{margin-top:20px; padding:28px 0 46px; border-top:1px solid rgba(0,0,0,.06); color:var(--ink-soft); font-size:.95rem;}
+
+/* Remove previous mobile dropdown elements and show simple mobile buttons */
+.mobile-menu-btn, .mobile-nav { display:none !important }
+
+.mobile-nav-buttons{ display:none; justify-content:center; gap:12px; padding:12px 16px }
+.mobile-btn{ display:inline-block; padding:10px 14px; border-radius:12px; background:var(--card); color:var(--ink); text-decoration:none; border:1px solid rgba(0,0,0,.06); font-weight:700 }
+
+@media (max-width:980px){
+  .mobile-nav-buttons{ display:flex }
+  .ios-nav{ display:none } /* hide desktop control */
+}
 
 /* Revert card sizing to responsive auto-fit (up to 4 columns on wide screens) */
 .cards{
@@ -200,9 +240,12 @@ footer .wrap {
 .contact-row .sep{margin:0 8px; color:rgba(0,0,0,.12)}
 .footnote{color:var(--ink-soft)}
 
-/* Profile contact line larger */
-.contact-meta{ font-size:1.05rem; font-weight:700; color:var(--ink); margin-top:6px }
-@media (max-width:600px){ .contact-meta{ font-size:0.98rem; font-weight:600 } }
+/* Desktop layout: place contact row items horizontally and align with footnote */
+@media (min-width:981px){
+  .contact-footer{flex-direction:row; justify-content:center; align-items:center; gap:24px}
+  .contact-row{flex-direction:row}
+  .footnote{margin:0 0 0 8px}
+}
 
 @media (min-width:760px){
   .contact-footer{flex-direction:column}
@@ -210,7 +253,7 @@ footer .wrap {
 }
 
 /* Profile two-column layout (desktop) and boxed left container */
-.profile-grid{ display:grid; gap:100px; grid-template-columns: 480px 1fr; align-items:start; }
+.profile-grid{ display:grid; gap:100px; grid-template-columns: 560px 1fr; align-items:start; }
 .profile-left{
   background:#ffffff;
   border:1px solid rgba(0,0,0,.06);
@@ -231,8 +274,9 @@ footer .wrap {
     height: calc(100vh - (var(--header-h) + 48px));
     overflow:auto;
     -webkit-overflow-scrolling: touch;
+    min-width:560px; /* prevent narrowing that causes extra wrapping/scroll */
   }
-  .profile-grid{ grid-template-columns:480px 1fr; gap:100px; }
+  .profile-grid{ grid-template-columns:560px 1fr; gap:100px; }
   .profile-right{ padding:24px 0 0 }
 }
 
@@ -245,3 +289,110 @@ footer .wrap {
 
 /* Emphasize the left title */
 .profile-left h1{ font-size: clamp(24px, 4vw, 40px); margin-top:0; font-weight:900; letter-spacing:0.25px }
+
+/* Mobile-only: show burger, hide inline links, stack footer contacts */
+@media (max-width:980px){
+  .menu-btn{ display:none; } /* hide menu button on mobile (nav removed) */
+  .links{ display:none !important; } /* hide inline nav links on mobile */
+
+  /* Ensure any nav-open state does not reveal a menu on mobile */
+  body.nav-open #navLinks{ display:none !important; }
+
+  /* Stack footer contacts vertically and place above copyright */
+  .contact-footer{ flex-direction:column; align-items:flex-start; gap:12px }
+  .contact-row{ display:flex; flex-direction:column; align-items:flex-start; gap:8px }
+}
+
+/* Mobile-only: display contact items as centered stacked lines (4 lines total) */
+@media (max-width:980px){
+  .contact-row{ display:flex; flex-direction:column; align-items:center; gap:6px }
+  .contact-item{ text-align:center }
+  .contact-footer{ align-items:center; gap:8px }
+  footer{ padding:12px 0 18px }
+}
+
+/* Desktop-only: color the left profile panel teal with white text */
+@media (min-width:981px){
+  .profile-left{
+    background: var(--accent) !important; /* #006666 */
+    color: var(--bg) !important; /* #fafeff */
+    border-color: rgba(255,255,255,0.06);
+  }
+  .profile-left h1, .profile-left h2, .profile-left h3, .profile-left p, .profile-left li, .profile-left .meta, .profile-left .contact-meta{
+    color: var(--bg) !important;
+  }
+  .profile-left a{ color: var(--bg) !important; text-decoration:underline }
+}
+
+/* Mobile-only footer compactness: remove separators and tighten spacing */
+@media (max-width:980px){
+  .contact-row .sep{ display:none }
+  .contact-row{ gap:6px }
+  footer{ padding:12px 0 18px }
+  .contact-footer{ gap:8px }
+}
+
+/* Mobile: make footer contact lines a bit smaller for compactness */
+@media (max-width:980px){
+  .contact-item{ font-size:0.92rem; }
+  .footnote{ font-size:0.86rem }
+}
+
+/* iOS-style segmented control */
+.ios-nav{ display:flex; align-items:center; }
+.ios-segment{
+  display:inline-flex; position:relative; gap:6px; background:rgba(0,0,0,0.03);
+  padding:6px; border-radius:14px; align-items:center;
+  overflow:hidden; /* ensure indicator cannot escape the box */
+}
+.ios-link{
+  display:inline-flex; align-items:center; justify-content:center; padding:8px 14px; border-radius:10px;
+  color:var(--ink-soft); text-decoration:none; font-weight:700; font-size:.95rem;
+  position:relative; z-index:3;
+}
+.ios-link.active{ color:var(--accent); }
+.ios-indicator{
+  position:absolute; left:0; top:50%; height:40px; width:0; border-radius:10px;
+  transform: translateY(-50%); /* keep vertically centered by default */
+  background: linear-gradient(180deg, rgba(255,255,255,0.14), rgba(255,255,255,0.03));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.20), 0 6px 18px rgba(0,0,0,0.06);
+  backdrop-filter: blur(8px) saturate(130%);
+  border:1px solid rgba(255,255,255,0.06);
+  transition: transform 280ms cubic-bezier(.2,.9,.2,1), width 280ms cubic-bezier(.2,.9,.2,1);
+  z-index:1; pointer-events:none;
+}
+
+/* ensure the control doesn't overflow */
+.ios-segment{ max-width:360px }
+
+/* Hide on small screens (mobile uses stacked footer nav) */
+@media (max-width:980px){ .ios-nav{ display:none } }
+
+/* Mobile vertical nav */
+.mobile-menu-btn{ display:none; border:0; background:var(--accent); color:#fff; padding:8px 12px; border-radius:10px; cursor:pointer }
+.mobile-nav{ display:none; flex-direction:column; gap:8px; margin-top:8px }
+.mobile-nav a{ padding:10px 12px; background:var(--card); border-radius:10px; text-decoration:none; color:var(--ink-soft); border:1px solid rgba(0,0,0,.04) }
+
+@media (max-width:980px){
+  .mobile-menu-btn{ display:inline-flex; margin-left:auto; position:relative; z-index:90 }
+
+  /* hide desktop segmented control */
+  .ios-nav{ display:none }
+
+  .mobile-nav{
+    display:none; /* hidden by default */
+    position:absolute;
+    top: calc(var(--header-h) + 10px);
+    right: 18px;
+    flex-direction:column; gap:8px; z-index:85;
+    background: var(--card);
+    padding:10px; border-radius:12px; box-shadow:var(--shadow);
+    border:1px solid rgba(0,0,0,0.06);
+    min-width:160px;
+    overflow:hidden;
+  }
+  .mobile-nav.open{ display:flex }
+
+  .mobile-nav a{ display:block; color:var(--ink-soft); text-decoration:none; padding:8px 10px; border-radius:8px }
+  .mobile-nav a:focus-visible{ outline:2px solid var(--ring) }
+}
