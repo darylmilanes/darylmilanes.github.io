@@ -1,48 +1,6 @@
 // Year
 document.getElementById('y').textContent = new Date().getFullYear();
 
-// Simple mobile menu: convert links to a drawer on small screens
-const btn = document.getElementById('menuBtn');
-const nav = document.getElementById('navLinks');
-const mq = window.matchMedia('(max-width: 760px)');
-
-function setupMobileNav(active){
-  if(active){
-    btn.style.display = 'inline-block';
-    nav.style.position = 'absolute';
-    nav.style.top = 'var(--header-h)';
-    nav.style.right = '20px';
-    nav.style.padding = '12px';
-    nav.style.background = '#fff';
-    nav.style.border = '1px solid rgba(0,0,0,.08)';
-    nav.style.borderRadius = '14px';
-    nav.style.boxShadow = '0 12px 24px rgba(0,0,0,.12)';
-    nav.style.display = 'none';
-    nav.dataset.mode = 'mobile';
-  }else{
-    btn.style.display = 'none';
-    nav.removeAttribute('style');
-    nav.dataset.mode = 'desktop';
-  }
-}
-setupMobileNav(mq.matches);
-mq.addEventListener('change', e => setupMobileNav(e.matches));
-
-btn.addEventListener('click', () => {
-  const expanded = btn.getAttribute('aria-expanded') === 'true';
-  btn.setAttribute('aria-expanded', String(!expanded));
-  if(nav.style.display === 'none'){ nav.style.display = 'flex'; }
-  else{ nav.style.display = 'none'; }
-});
-
-// Close drawer when clicking a link on mobile
-nav.addEventListener('click', e => {
-  if(nav.dataset.mode === 'mobile' && e.target.tagName === 'A'){
-    nav.style.display = 'none';
-    btn.setAttribute('aria-expanded', 'false');
-  }
-});
-
 // Project filter pills functionality
 const filterContainer = document.getElementById('project-filters');
 const pills = filterContainer ? filterContainer.querySelectorAll('.pill') : [];
@@ -109,4 +67,31 @@ projectCards.forEach(card => {
     window.addEventListener('load', function(){ document.title = desired; });
     document.addEventListener('visibilitychange', function(){ if(!document.hidden) document.title = desired; });
   }catch(e){/* ignore */}
+})();
+
+// ios-style segmented indicator
+(function(){
+  var segment = document.querySelector('.ios-segment');
+  if(!segment) return;
+  var links = segment.querySelectorAll('.ios-link');
+  var indicator = segment.querySelector('.ios-indicator');
+  if(!links.length || !indicator) return;
+
+  function update(){
+    var path = window.location.pathname.split('/').pop() || 'index.html';
+    var target = Array.from(links).find(a=>a.getAttribute('href').split('/').pop()===path) || links[0];
+    links.forEach(l=>l.classList.remove('active'));
+    target.classList.add('active');
+    var rect = target.getBoundingClientRect();
+    var parentRect = segment.getBoundingClientRect();
+    var left = rect.left - parentRect.left;
+    indicator.style.width = rect.width + 'px';
+    // use transform with translateX and keep translateY(-50%) for vertical centering
+    indicator.style.transform = 'translateX(' + left + 'px) translateY(-50%)';
+  }
+
+  // attach click listeners for instant feedback
+  links.forEach(l=>l.addEventListener('click', function(){ links.forEach(x=>x.classList.remove('active')); this.classList.add('active'); update(); }));
+  window.addEventListener('resize', update);
+  setTimeout(update,60);
 })();
