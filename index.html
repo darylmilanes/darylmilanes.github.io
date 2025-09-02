@@ -20,19 +20,25 @@
     <div class="wrap nav" role="navigation" aria-label="Primary">
       <a class="brand" href="#">
         <div class="logo" aria-hidden="true"></div>
-        <span>DARYL MILANES</span>
+        <span>DARYL JOHN MILANES</span>
       </a>
 
-      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks" aria-label="Toggle navigation">
-        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
-      </button>
-
-      <nav id="navLinks" class="links" aria-label="Main links">
-        <a href="index.html">Projects</a>
-        <a href="profile.html">Profile</a>
+      <!-- iOS-style segmented nav -->
+      <nav class="ios-nav" aria-label="Primary pages">
+        <div class="ios-segment" role="tablist" aria-label="Main">
+          <a href="index.html" class="ios-link" role="tab">Projects</a>
+          <a href="profile.html" class="ios-link" role="tab">Profile</a>
+          <div class="ios-indicator" aria-hidden="true"></div>
+        </div>
       </nav>
     </div>
   </header>
+
+  <!-- Mobile-only simple nav buttons (appear below header on small screens) -->
+  <div class="mobile-nav-buttons" aria-hidden="false">
+    <a class="mobile-btn" href="index.html">Projects</a>
+    <a class="mobile-btn" href="profile.html">Profile</a>
+  </div>
 
   <!-- Hero -->
   <section class="hero">
@@ -239,11 +245,9 @@
   <footer>
     <div class="wrap contact-footer">
       <div class="contact-row">
-        Email: <a href="mailto:hello@darylmilanes.com">hello@darylmilanes.com</a>
-        <span class="sep">·</span>
-        Mobile: <a href="tel:+639692371267">+63&nbsp;969&nbsp;237&nbsp;1267</a>
-        <span class="sep">·</span>
-        GitHub: <a href="https://github.com/darylmilanes" target="_blank" rel="noopener">github.com/darylmilanes</a>
+        <div class="contact-item">Email: <a href="mailto:hello@darylmilanes.com">hello@darylmilanes.com</a></div>
+        <div class="contact-item">Mobile: <a href="tel:+639692371267">+63&nbsp;969&nbsp;237&nbsp;1267</a></div>
+        <div class="contact-item">GitHub: <a href="https://github.com/darylmilanes" target="_blank" rel="noopener">github.com/darylmilanes</a></div>
       </div>
 
       <div class="footnote">© <span id="y"></span> Daryl. All rights reserved.</div>
