@@ -51,6 +51,16 @@ header{
 }
 .brand span{font-weight:700; letter-spacing:.2px}
 
+/* Brand logo image sizing: ensure the image fits within the header without being distorted */
+.brand-logo{
+  display:block;
+  height:auto;                /* maintain intrinsic aspect ratio */
+  max-height: calc(var(--header-h) - 20px); /* give some vertical padding inside header */
+  width:auto;
+  max-width: none;
+  border-radius: 0; /* no background rounding for PNG logo */
+}
+
 .links{display:flex; align-items:center; gap:18px}
 .links a{
   text-decoration:none; color:var(--ink-soft); font-weight:600; font-size:.95rem;
