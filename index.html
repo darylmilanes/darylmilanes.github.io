@@ -1,306 +1,501 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>DARYL MILANES — Portfolio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>DARYL MILANES — Portfolio</title>
+    
+    <!-- Icons & Manifest -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
 
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS (via CDN for single-file portability) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
-  <!-- External CSS -->
-  <link rel="stylesheet" href="style.css?v=2">
-</head>
-<body>
+    <!-- Custom Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            DEFAULT: '#004080', // Deep Royal Blue
+                            light: '#0059b3',
+                            dark: '#002a55',
+                        },
+                        canvas: '#fafeff', // Ice White
+                        ink: {
+                            DEFAULT: '#474747', // Graphite
+                            light: '#6b7280',
+                        },
+                        accent: {
+                            amber: '#FFB347',
+                            teal: '#2A9D8F',
+                            red: '#E63946',
+                        }
+                    },
+                    boxShadow: {
+                        'glass': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+                        'glass-hover': '0 10px 15px -3px rgba(0, 64, 128, 0.1), 0 4px 6px -2px rgba(0, 64, 128, 0.05)',
+                    }
+                }
+            }
+        }
+    </script>
 
-  <!-- Header -->
-  <header>
-    <div class="wrap nav" role="navigation" aria-label="Primary">
-      <a class="brand" href="#">
-  <img src="logo-nobg.png" alt="Daryl John Milanes logo" class="brand-logo">
-    <span>DARYL JOHN MILANES</span>
-      </a>
-
-      <!-- iOS-style segmented nav -->
-      <nav class="ios-nav" aria-label="Primary pages">
-        <div class="ios-segment" role="tablist" aria-label="Main">
-          <a href="index.html" class="ios-link" role="tab">Projects</a>
-          <a href="profile.html" class="ios-link" role="tab">Profile</a>
-          <div class="ios-indicator" aria-hidden="true"></div>
-        </div>
-      </nav>
-    </div>
-  </header>
-
-  <!-- Mobile-only simple nav buttons (appear below header on small screens) -->
-  <div class="mobile-nav-buttons" aria-hidden="false">
-    <a class="mobile-btn" href="index.html">Projects</a>
-    <a class="mobile-btn" href="profile.html">Profile</a>
-  </div>
-
-  <!-- Hero -->
-  <section class="hero">
-    <div class="wrap">
-      <div class="grid">
-        <div>
-          <div class="kicker">Portfolio</div>
-          <h1>Tools, utilities, and learning apps built from imagination.</h1>
-          <p class="subtitle">
-            A curated hub of projects: productivity tools, web utilities, learning aids, and creative demos—
-            all hosted for easy access.
-          </p>
-        </div>
-
-        <aside class="hero-card" aria-label="Quick highlights">
-          <p class="filter-label" style="margin-bottom:10px; color:var(--ink-soft); font-size:.98rem;">Filter by category:</p>
-          <div class="hero-list category-pills" id="project-filters">
-            <button class="pill" data-cat="productivity" type="button"><span class="dot"></span>Productivity</button>
-            <button class="pill" data-cat="utilities" type="button"><span class="dot"></span>Utilities</button>
-            <button class="pill" data-cat="learning" type="button"><span class="dot"></span>Learning</button>
-            <button class="pill" data-cat="fun" type="button"><span class="dot"></span>Fun</button>
-          </div>
-        </aside>
-      </div>
-    </div>
-  </section>
-
-  <!-- Featured preview -->
-  <section class="section" id="projects" aria-labelledby="projects-title">
-    <div class="wrap">
-      <h2 id="projects-title">Featured Projects</h2>
-      <div class="cards">
-
-
-<article class="card" 
-  data-cat="productivity" 
-  data-tags="html css js resume builder frontend" 
-  data-link="https://darylmilanes.com/resume-builder/">
-  <h3>Resume Builder</h3>
-  <p class="meta">Web · HTML/CSS/JS</p>
-  <p class="desc">Generate clean resumes with export-ready templates.</p>
-  <div class="tags"><span class="tag">Front-end</span><span class="tag">Templates</span></div>
-  <div class="actions">
-    <a class="btn" href="https://darylmilanes.com/resume-builder/" target="_blank" rel="noopener">Live Preview</a>
-  </div>
-</article>
-
-<article class="card" 
-  data-cat="productivity" 
-  data-tags="organise ideas tasks kanban board" 
-  data-link="https://darylmilanes.com/mini-kanban/">
-  <h3>Micro-Kanban</h3>
-  <p class="meta">Web · Organizer</p>
-  <p class="desc">Organize your ideas the way you want it.</p>
-  <div class="tags"><span class="tag">Organizer</span><span class="tag">Tool</span></div>
-  <div class="actions">
-    <a class="btn" href="https://darylmilanes.com/mini-kanban/" target="_blank" rel="noopener">Live Preview</a>
-  </div>
-</article>
-
-<article class="card" 
-  data-cat="productivity" 
-  data-tags="pricing calculator proposal quotes" 
-  data-link="https://darylmilanes.com/price-proposal-calculator/">
-  <h3>Price Proposal Calculator</h3>
-  <p class="meta">Web · Calculator</p>
-  <p class="desc">Quickly produce professional price proposals with clear breakdowns.</p>
-  <div class="tags"><span class="tag">Calculator</span><span class="tag">UX</span></div>
-  <div class="actions">
-    <a class="btn" href="https://darylmilanes.com/price-proposal-calculator/" target="_blank" rel="noopener">Live Preview</a>
-  </div>
-</article>
-
-
-<article class="card" 
-  data-cat="utilities" 
-  data-tags="deal calculator compare savings shopping" 
-  data-link="https://darylmilanes.com/best-deal-calculator/">
-  <h3>Best Deal Calculator</h3>
-  <p class="meta">Web · Calculator</p>
-  <p class="desc">Easily compare prices and quantities to find the best value when shopping.</p>
-  <div class="tags">
-    <span class="tag">Calculator</span>
-    <span class="tag">Shopping</span>
-  </div>
-  <div class="actions">
-    <a class="btn" href="https://darylmilanes.com/best-deal-calculator/" target="_blank" rel="noopener">Live Preview</a>
-  </div>
-</article>
-
-        <article class="card" 
-          data-cat="utilities" 
-          data-tags="cost estimator budgeting programme calculator" 
-          data-link="https://darylmilanes.com/programme-cost-estimator/">
-          <h3>Programme Cost Estimator</h3>
-          <p class="meta">Web · Calculator</p>
-          <p class="desc">Estimate programme costs, budget breakdowns, and funding needs with a simple interactive tool.</p>
-          <div class="tags"><span class="tag">Calculator</span><span class="tag">Budgeting</span></div>
-          <div class="actions">
-            <a class="btn" href="https://darylmilanes.com/programme-cost-estimator/" target="_blank" rel="noopener">Live Preview</a>
-          </div>
-        </article>
-
-<article class="card" 
-  data-cat="productivity" 
-  data-tags="search allocation zone lookup" 
-  data-link="https://darylmilanes.com/zone-allocation-search">
-  <h3>Zone Allocation Search</h3>
-  <p class="meta">Web · Search</p>
-  <p class="desc">Fast lookup tool for assigned zones/areas with clean results.</p>
-  <div class="tags"><span class="tag">Search</span><span class="tag">UI</span></div>
-  <div class="actions">
-    <a class="btn" href="https://darylmilanes.com/zone-allocation-search" target="_blank" rel="noopener">Live Preview</a>
-  </div>
-</article>
-
-
-<article class="card in-progress" data-cat="productivity progress" data-tags="crm tickets filters table in-progress">
-  <h3>CRM</h3>
-  <span class="badge">In Progress</span>
-  <p class="meta">Web · Data tables</p>
-  <p class="desc">Lightweight CRM for ticket logging, filtering, and basic analytics.</p>
-  <div class="tags"><span class="tag">Tables</span><span class="tag">Filters</span></div>
-  <div class="actions">
-  </div>
-</article>
-<article class="card" data-cat="productivity progress" data-tags="expense tracker shared split in-progress">
-  <h3>Shared Expense Tracker</h3>
-  <p class="meta">Web · Tracking</p>
-  <p class="desc">Collaborative tool for splitting and tracking shared expenses.</p>
-  <div class="tags"><span class="tag">Tracking</span><span class="tag">Charts</span></div>
-  <div class="actions">
-    <a class="btn" href="https://darylmilanes.com/trackr" target="_blank" rel="noopener">Live Preview</a>
-  </div>
-</article>
-<article class="card in-progress" data-cat="productivity" data-tags="grades student teacher averages localstorage">
-  <h3>Student Grades Tracker</h3>
-  <span class="badge">In Progress</span>
-  <p class="meta">Web · LocalStorage</p>
-  <p class="desc">Record scores, compute averages, and keep data in the browser.</p>
-  <div class="tags"><span class="tag">LocalStorage</span><span class="tag">Education</span></div>
-  <div class="actions">
-  </div>
-</article>
-
-<article class="card" 
-  data-cat="utilities" 
-  data-tags="tinyurl api shortener clipboard" 
-  data-link="https://darylmilanes.com/short-link/">
-  <h3>Short Link (TinyURL API)</h3>
-  <p class="meta">API · JavaScript</p>
-  <p class="desc">Shorten URLs via TinyURL API with copy-to-clipboard and history.</p>
-  <div class="tags"><span class="tag">API</span><span class="tag">Clipboard</span></div>
-  <div class="actions">
-    <a class="btn" href="https://darylmilanes.com/short-link/" target="_blank" rel="noopener">Live Preview</a>
-  </div>
-</article>
-
-
-<article class="card" 
-  data-cat="utilities" 
-  data-tags="menu list printable restaurant ordering" 
-  data-link="https://darylmilanes.com/menu-list">
-  <h3>Menu List</h3>
-  <p class="meta">Web · Utilities</p>
-  <p class="desc">A cleanly organized, digital menu list ideal for browsing in a structured, easy-to-navigate format.</p>
-  <div class="tags"><span class="tag">Menus</span><span class="tag">Print</span><span class="tag">Restaurant</span></div>
-  <div class="actions">
-    <a class="btn" href="https://darylmilanes.com/menu-list" target="_blank" rel="noopener">Live Preview</a>
-  </div>
-</article>
-
-
-<article class="card" 
-  data-cat="utilities" 
-  data-tags="qr code logo canvas" 
-  data-link="https://darylmilanes.com/qr-code-generator/">
-  <h3>QR Code Generator (with logo)</h3>
-  <p class="meta">Web · Canvas</p>
-  <p class="desc">Create branded QR codes for websites with logo overlay.</p>
-  <div class="tags"><span class="tag">Canvas</span><span class="tag">Branding</span></div>
-  <div class="actions">
-    <a class="btn" href="https://darylmilanes.com/qr-code-generator/" target="_blank" rel="noopener">Live Preview</a>
-  </div>
-</article>
-
-<article class="card" 
-  data-cat="learning" 
-  data-tags="interview flashcards practice q&a careers" 
-  data-link="https://darylmilanes.com/interview-prep-cards/">
-  <h3>Interview Prep Cards</h3>
-  <p class="meta">Learning · Flashcards</p>
-  <p class="desc">Practice interviews with categorized flashcards and tips.</p>
-  <div class="tags"><span class="tag">Flashcards</span><span class="tag">Careers</span></div>
-  <div class="actions">
-    <a class="btn" href="https://darylmilanes.com/interview-prep-cards/" target="_blank" rel="noopener">Live Preview</a>
-  </div>
-</article>
-
+    <style>
+        /* Custom Scrollbar for horizontal scrolling zones */
+        .hide-scroll::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scroll {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
         
-<article class="card in-progress" data-cat="learning" data-tags="vocabulary cards study shuffle localstorage">
-  <h3>Vocabulary Cards</h3>
-  <span class="badge">In Progress</span>
-  <p class="meta">Learning · JavaScript</p>
-  <p class="desc">Interactive vocabulary flashcards with progress saved locally.</p>
-  <div class="tags"><span class="tag">Education</span><span class="tag">LocalStorage</span></div>
-  <div class="actions">
-  </div>
-</article>
+        /* Glassmorphism Utilities */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
 
-<article class="card" 
-  data-cat="learning" 
-  data-tags="pencil.plus communication toolkit learning site website" 
-  data-link="https://pencil.plus">
-  <h3>pencil.plus</h3>
-  <p class="meta">Learning · Website</p>
-  <p class="desc">Communication training website featuring editions, collections, and presentations.</p>
-  <div class="tags"><span class="tag">Learning</span><span class="tag">Website</span></div>
-  <div class="actions">
-    <a class="btn" href="https://pencil.plus" target="_blank" rel="noopener">Live Preview</a>
-  </div>
-</article>
+        /* Smooth Fade In */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="bg-canvas text-ink font-sans antialiased min-h-screen flex flex-col selection:bg-brand selection:text-white">
 
-<article class="card" 
-  data-cat="learning" 
-  data-tags="pencil.plus communication toolkit learning site website" 
-  data-link="https://darylmilanes.com/trainingplan-requestform/">
-  <h3>Training Plan Request Form</h3>
-  <p class="meta">Request Form · Data</p>
-  <p class="desc">Easily request a training plan tailored to your needs.</p>
-  <div class="tags"><span class="tag">Learning</span><span class="tag">Website</span></div>
-  <div class="actions">
-    <a class="btn" href="https://darylmilanes.com/trainingplan-requestform/" target="_blank" rel="noopener">Live Preview</a>
-  </div>
-</article>
+    <!-- Sticky Header -->
+    <header class="sticky top-0 z-50 glass-panel shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 md:h-20 gap-4">
+                
+                <!-- Logo Area -->
+                <a href="#" class="flex items-center gap-3 group shrink-0" onclick="resetFilters()">
+                    <img src="logo.png" alt="Daryl Milanes Logo" class="w-10 h-10 object-contain transition-transform group-hover:scale-105">
+                    <div class="flex flex-col">
+                        <span class="font-display font-bold text-brand leading-none tracking-tight group-hover:text-brand-light transition-colors">DARYL MILANES</span>
+                        <span class="text-[10px] font-semibold tracking-widest text-ink-light uppercase mt-0.5">Portfolio</span>
+                    </div>
+                </a>
 
-<article class="card" data-cat="fun" data-tags="game show random picker prizes names">
-  <h3>Raffle Roll</h3>
-  <p class="meta">Web · Randomizer</p>
-  <p class="desc">Spin for winners in raffles, giveaways, or events—simple, fair, and fun.</p>
-  <div class="tags"><span class="tag">Randomizer</span><span class="tag">UI</span></div>
-  <div class="actions">
-    <a class="btn" href="https://darylmilanes.com/raffle-roll" target="_blank" rel="noopener">Live Preview</a>
-  </div>
+                <!-- Desktop Search (Hidden on Mobile) -->
+                <div class="hidden md:flex flex-1 max-w-md mx-4">
+                    <div class="relative w-full group">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-gray-400 group-focus-within:text-brand transition-colors">
+                            <i data-lucide="search" class="w-4 h-4"></i>
+                        </div>
+                        <input type="text" id="desktopSearch" placeholder="Find an app..." 
+                            class="block w-full pl-10 pr-3 py-2 border border-gray-200 rounded-full leading-5 bg-white placeholder-gray-400 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand sm:text-sm transition-all shadow-sm">
+                    </div>
+                </div>
 
-      </div>
-    </div>
-  </section>
+                <!-- Mobile Actions -->
+                <div class="flex md:hidden items-center gap-2">
+                    <button id="mobileSearchToggle" class="p-2 rounded-full text-gray-500 hover:bg-gray-100 transition-colors">
+                        <i data-lucide="search" class="w-5 h-5"></i>
+                    </button>
+                    <!-- Mobile Contact Icon -->
+                    <button onclick="document.getElementById('contactModal').showModal()" class="p-2 rounded-full text-brand hover:bg-blue-50 transition-colors">
+                        <i data-lucide="message-circle" class="w-5 h-5"></i>
+                    </button>
+                </div>
 
-  <footer>
-    <div class="wrap contact-footer">
-      <div class="contact-row">
-        <div class="contact-item">Email: <a href="mailto:hello@darylmilanes.com">hello@darylmilanes.com</a></div>
-        <div class="contact-item">Mobile: <a href="tel:+639692371267">+63&nbsp;969&nbsp;237&nbsp;1267</a></div>
-        <div class="contact-item">GitHub: <a href="https://github.com/darylmilanes" target="_blank" rel="noopener">github.com/darylmilanes</a></div>
-      </div>
+                <!-- Social/Contact (Desktop) -->
+                <div class="hidden md:flex items-center gap-3">
+                    <a href="https://github.com/darylmilanes" target="_blank" class="p-2 text-gray-400 hover:text-brand transition-colors" title="GitHub">
+                        <i data-lucide="github" class="w-5 h-5"></i>
+                    </a>
+                    <button onclick="document.getElementById('contactModal').showModal()" class="px-4 py-2 bg-brand hover:bg-brand-dark text-white text-sm font-medium rounded-full shadow-lg shadow-brand/20 transition-all hover:scale-105 active:scale-95">
+                        Contact Me
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Mobile Search Bar (Expandable) -->
+            <div id="mobileSearchBar" class="hidden pb-4 px-1 md:hidden animate-fade-in">
+                <input type="text" id="mobileSearchInput" placeholder="Search apps..." 
+                    class="block w-full pl-4 pr-4 py-2 border border-gray-200 rounded-xl bg-white focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand text-base shadow-inner">
+            </div>
+        </div>
+    </header>
 
-      <div class="footnote">© <span id="y"></span> Daryl. All rights reserved.</div>
-    </div>
-  </footer>
+    <!-- Navigation / Filter Bar -->
+    <nav class="bg-white/50 border-b border-gray-100 py-3 sticky top-[64px] md:top-[80px] z-40 backdrop-blur-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex overflow-x-auto hide-scroll gap-2 pb-1" id="categoryContainer">
+                <!-- Categories injected by JS -->
+            </div>
+        </div>
+    </nav>
 
-  <!-- External JS -->
-  <script src="script.js"></script>
+    <!-- Main Content -->
+    <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full">
+        
+        <!-- Category Title -->
+        <div class="mb-6 flex items-baseline justify-between">
+            <h2 id="currentCategoryTitle" class="text-2xl font-display font-bold text-ink">All Projects</h2>
+            <span id="projectCount" class="text-sm font-medium text-gray-400 bg-gray-50 px-3 py-1 rounded-full border border-gray-100">Loading...</span>
+        </div>
+
+        <!-- Grid -->
+        <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Cards injected by JS -->
+        </div>
+
+        <!-- Empty State (Hidden by default) -->
+        <div id="emptyState" class="hidden flex-col items-center justify-center py-20 text-center">
+            <div class="bg-gray-50 p-6 rounded-full mb-4">
+                <i data-lucide="search-x" class="w-10 h-10 text-gray-300"></i>
+            </div>
+            <h3 class="text-lg font-semibold text-gray-600">No projects found</h3>
+            <p class="text-gray-400 text-sm mt-1">Try adjusting your search or category filter.</p>
+            <button onclick="resetFilters()" class="mt-6 text-brand font-medium hover:underline">Clear all filters</button>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-100 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="text-sm text-gray-500">
+                    &copy; <span id="year"></span> Daryl Milanes. All rights reserved.
+                </div>
+                <div class="flex flex-wrap justify-center gap-6 text-sm font-medium text-gray-600">
+                    <a href="mailto:hello@darylmilanes.com" class="hover:text-brand transition-colors flex items-center gap-2">
+                        <i data-lucide="mail" class="w-4 h-4"></i> hello@darylmilanes.com
+                    </a>
+                    <a href="tel:+639692371267" class="hover:text-brand transition-colors flex items-center gap-2">
+                        <i data-lucide="phone" class="w-4 h-4"></i> +63 969 237 1267
+                    </a>
+                    <a href="https://github.com/darylmilanes" target="_blank" class="hover:text-brand transition-colors flex items-center gap-2">
+                        <i data-lucide="github" class="w-4 h-4"></i> GitHub
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Age Verification Modal -->
+    <dialog id="ageModal" class="backdrop:bg-black/60 rounded-2xl shadow-2xl p-0 overflow-hidden max-w-sm w-full m-auto open:animate-fade-in">
+        <div class="bg-white">
+            <div class="bg-accent-red/10 p-6 flex flex-col items-center justify-center border-b border-accent-red/20">
+                <div class="w-12 h-12 rounded-full bg-accent-red/20 flex items-center justify-center text-accent-red mb-3">
+                    <i data-lucide="shield-alert" class="w-6 h-6"></i>
+                </div>
+                <h3 class="text-lg font-bold text-accent-red uppercase tracking-wider">Restricted Content</h3>
+            </div>
+            <div class="p-6 text-center">
+                <p class="text-gray-600 mb-6">
+                    This section contains content intended for mature audiences (Rated 18+). 
+                    By proceeding, you confirm that you are at least 18 years of age.
+                </p>
+                <div class="flex flex-col gap-3">
+                    <button id="confirmAgeBtn" class="w-full py-3 bg-accent-red hover:bg-red-700 text-white font-bold rounded-xl transition-colors shadow-lg shadow-red-200">
+                        I am 18 or older
+                    </button>
+                    <button onclick="document.getElementById('ageModal').close()" class="w-full py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 font-semibold rounded-xl transition-colors">
+                        Go Back
+                    </button>
+                </div>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- Contact Modal -->
+    <dialog id="contactModal" class="backdrop:bg-black/40 rounded-2xl shadow-2xl p-0 overflow-hidden max-w-sm w-full m-auto open:animate-fade-in">
+        <div class="bg-white p-0">
+            <div class="p-6 bg-brand text-white flex items-center justify-between">
+                <h3 class="text-xl font-bold font-display">Get in Touch</h3>
+                <button onclick="document.getElementById('contactModal').close()" class="p-1 hover:bg-white/20 rounded-full transition-colors">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <div class="p-6 flex flex-col gap-4">
+                <a href="mailto:hello@darylmilanes.com" class="flex items-center gap-4 p-4 rounded-xl hover:bg-gray-50 border border-gray-100 transition-all hover:border-brand/30 group">
+                    <div class="w-10 h-10 rounded-full bg-blue-50 text-brand flex items-center justify-center group-hover:bg-brand group-hover:text-white transition-colors">
+                        <i data-lucide="mail" class="w-5 h-5"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-xs text-gray-400 font-medium uppercase tracking-wide">Email</span>
+                        <span class="text-ink font-semibold group-hover:text-brand transition-colors">hello@darylmilanes.com</span>
+                    </div>
+                </a>
+                
+                <a href="tel:+639692371267" class="flex items-center gap-4 p-4 rounded-xl hover:bg-gray-50 border border-gray-100 transition-all hover:border-brand/30 group">
+                    <div class="w-10 h-10 rounded-full bg-green-50 text-green-600 flex items-center justify-center group-hover:bg-green-600 group-hover:text-white transition-colors">
+                        <i data-lucide="phone" class="w-5 h-5"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-xs text-gray-400 font-medium uppercase tracking-wide">Mobile</span>
+                        <span class="text-ink font-semibold group-hover:text-green-700 transition-colors">+63 969 237 1267</span>
+                    </div>
+                </a>
+
+                <a href="https://github.com/darylmilanes" target="_blank" class="flex items-center gap-4 p-4 rounded-xl hover:bg-gray-50 border border-gray-100 transition-all hover:border-brand/30 group">
+                    <div class="w-10 h-10 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center group-hover:bg-gray-800 group-hover:text-white transition-colors">
+                        <i data-lucide="github" class="w-5 h-5"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="text-xs text-gray-400 font-medium uppercase tracking-wide">Social</span>
+                        <span class="text-ink font-semibold group-hover:text-gray-800 transition-colors">darylmilanes</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </dialog>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- DATA SOURCE ---
+        const projects = [
+            // CATEGORY: PRODUCTIVITY (10)
+            { title: "AirLink", desc: "Cross-platform calendar app.", url: "https://darylmilanes.com/airlink", cat: "productivity", icon: "🗓️", tags: "calendar time" },
+            { title: "EveryDate", desc: "Calendar and reminders app in one.", url: "https://darylmilanes.com/EveryDate/", cat: "productivity", icon: "📅", tags: "tasks reminders" },
+            { title: "Daily Checklist", desc: "Simple daily task management.", url: "https://darylmilanes.com/daily-checklist/", cat: "productivity", icon: "✅", tags: "todo tasks" },
+            { title: "Checklist", desc: "Data management and CRM for work.", url: "https://darylmilanes.com/checklist/", cat: "productivity", icon: "📋", tags: "crm data" },
+            { title: "VersaPad", desc: "Cross-platform notepad, reminders & coding.", url: "https://darylmilanes.com/versapad/", cat: "productivity", icon: "📝", tags: "code notes" },
+            { title: "Decode", desc: "QR code generator & URL shortener.", url: "https://darylmilanes.com/decode/", cat: "productivity", icon: "🔗", tags: "qr tinyurl" },
+            { title: "Best Deal Calculator", desc: "Compare products to find the best value.", url: "https://darylmilanes.com/best-deal-calculator/", cat: "productivity", icon: "🏷️", tags: "shopping calc" },
+            { title: "Proposal Calculator", desc: "Price proposal breakdowns.", url: "https://darylmilanes.com/price-proposal-calculator/", cat: "productivity", icon: "💼", tags: "quote finance" },
+            { title: "Project Cost Estimator", desc: "Configurable cost estimator.", url: "https://darylmilanes.com/programme-cost-estimator/", cat: "productivity", icon: "📊", tags: "budget plan" },
+            { title: "Quix", desc: "Clean and simple note taking app.", url: "https://darylmilanes.com/quix/", cat: "productivity", icon: "✏️", tags: "notes writing", badge: "Ongoing" },
+
+            // CATEGORY: EDUCATION (13)
+            { title: "GradeVault", desc: "Grading system for schools.", url: "https://darylmilanes.com/GradeVault/", cat: "education", icon: "🎓", tags: "grades teacher" },
+            { title: "CampusFlow", desc: "School data monitoring.", url: "https://darylmilanes.com/campusflow/", cat: "education", icon: "🏫", tags: "admin data" },
+            { title: "Lesson Dashboard", desc: "Access lessons for different classes.", url: "https://darylmilanes.com/lesson_dashboard/", cat: "education", icon: "📚", tags: "content lms" },
+            { title: "BentoBoard", desc: "Dashboard for multi-access class resources.", url: "https://darylmilanes.com/bentoboard/", cat: "education", icon: "🍱", tags: "dashboard" },
+            { title: "Seat Plan", desc: "Digital seat plan & attendance recorder.", url: "https://darylmilanes.com/seatplan-attendance/", cat: "education", icon: "🪑", tags: "attendance class" },
+            { title: "StudyTracker", desc: "Study progress tracker for students.", url: "https://darylmilanes.com/studytracker/", cat: "education", icon: "📈", tags: "student stats" },
+            { title: "QuizGen", desc: "Generate and answer quizzes.", url: "https://darylmilanes.com/quizgen/", cat: "education", icon: "❓", tags: "quiz test" },
+            { title: "WritingLab", desc: "AI writing proficiency assistant.", url: "https://darylmilanes.com/writinglab/", cat: "education", icon: "✍️", tags: "ai writing gemini" },
+            { title: "CareerMode", desc: "Interview prep for students.", url: "https://darylmilanes.com/careermode/", cat: "education", icon: "👔", tags: "jobs interview ai" },
+            { title: "Resume Builder", desc: "Create professional resumes.", url: "https://darylmilanes.com/resume-builder/", cat: "education", icon: "📄", tags: "cv jobs" },
+            { title: "BidBase", desc: "Bid calculation for MOE school ITQs.", url: "https://darylmilanes.com/bidbase/", cat: "education", icon: "💰", tags: "finance moe" },
+            { title: "Outline Generator", desc: "Programme outline writer for MOE.", url: "https://darylmilanes.com/moe-outlinegenerator/", cat: "education", icon: "🖊️", tags: "docs moe" },
+            { title: "Let's Vault In!", desc: "Interactive class game.", url: "https://darylmilanes.com/game-letsvaultin/", cat: "education", icon: "🎮", tags: "game fun" },
+
+            // CATEGORY: LIFESTYLE (8)
+            { title: "FairShare", desc: "Budget splitter for groups travelling.", url: "https://darylmilanes.com/fairshare/", cat: "lifestyle", icon: "✈️", tags: "travel money" },
+            { title: "SplitSync", desc: "Budget and expenses sharing in a household.", url: "https://darylmilanes.com/splitsync/", cat: "lifestyle", icon: "🏠", tags: "home money" },
+            { title: "BlockSync", desc: "HOA accounting and transparency tool.", url: "https://darylmilanes.com/blocksync/", cat: "lifestyle", icon: "🏘️", tags: "community" },
+            { title: "Grocery List", desc: "Shopping list management.", url: "https://darylmilanes.com/grocery/", cat: "lifestyle", icon: "🛒", tags: "food shop" },
+            { title: "Victual", desc: "Food and menu inventory planner.", url: "https://darylmilanes.com/victual/", cat: "lifestyle", icon: "🥘", tags: "cooking food" },
+            { title: "Menu List", desc: "Digital menu browser.", url: "https://darylmilanes.com/menu-list/", cat: "lifestyle", icon: "🍽️", tags: "restaurant", badge: "Beta" },
+            { title: "Raffle Roll", desc: "Digital raffle game.", url: "https://darylmilanes.com/raffle-roll/", cat: "lifestyle", icon: "🎰", tags: "game random" },
+            { title: "Ticketing System", desc: "Event ticketing.", url: "https://darylmilanes.com/ticketing-system/", cat: "lifestyle", icon: "🎟️", tags: "events", badge: "WIP" },
+
+            // CATEGORY: INSIGHTS (9)
+            { title: "Guide", desc: "Spiritual guide.", url: "https://guide.darylmilanes.com/", cat: "insights", icon: "🕊️", tags: "spirit" },
+            { title: "Discover", desc: "Spiritual exploration.", url: "https://discover.darylmilanes.com/", cat: "insights", icon: "🧭", tags: "spirit" },
+            { title: "Overview", desc: "Spiritual overview.", url: "https://overview.darylmilanes.com/", cat: "insights", icon: "🔭", tags: "spirit" },
+            { title: "Pick-a-verse", desc: "Random verse and reflection.", url: "https://darylmilanes.com/pick-a-verse/", cat: "insights", icon: "📖", tags: "bible" },
+            { title: "Scribe", desc: "Stories interpreted using the Bible.", url: "https://darylmilanes.com/scribe/", cat: "insights", icon: "📜", tags: "stories" },
+            { title: "Beyond Aware", desc: "Digital awareness guide.", url: "https://darylmilanes.com/beyond-aware/", cat: "insights", icon: "💡", tags: "guide" },
+            { title: "Ang Batang Pinoy", desc: "Digital guide for Filipino kids.", url: "https://darylmilanes.com/ang-batang-pinoy/", cat: "insights", icon: "🇵🇭", tags: "kids culture" },
+            { title: "HIV Awareness", desc: "Digital guide for HIV info.", url: "https://darylmilanes.com/HIVawareness/", cat: "insights", icon: "🎗️", tags: "health" },
+            { title: "Sustainability", desc: "Digital guide for eco-living.", url: "https://darylmilanes.com/sustainability/", cat: "insights", icon: "🌱", tags: "eco" },
+
+            // CATEGORY: RESTRICTED (1)
+            { title: "The Sunday Strip", desc: "Rated 18 BL stories.", url: "https://darylmilanes.com/thesundaystrip/", cat: "restricted", icon: "🔞", tags: "stories adult", restricted: true }
+        ];
+
+        // --- STATE ---
+        let currentFilter = 'all';
+        let searchQuery = '';
+        let targetRestrictedUrl = '';
+
+        // --- DOM ELEMENTS ---
+        const grid = document.getElementById('projectsGrid');
+        const categoryContainer = document.getElementById('categoryContainer');
+        const countSpan = document.getElementById('projectCount');
+        const titleEl = document.getElementById('currentCategoryTitle');
+        const emptyState = document.getElementById('emptyState');
+        const ageModal = document.getElementById('ageModal');
+
+        // --- CATEGORY CONFIG ---
+        const categories = [
+            { id: 'all', label: 'All Projects', icon: 'grid' },
+            { id: 'productivity', label: 'Productivity', icon: 'zap' },
+            { id: 'education', label: 'Education', icon: 'graduation-cap' },
+            { id: 'lifestyle', label: 'Lifestyle', icon: 'coffee' },
+            { id: 'insights', label: 'Insights', icon: 'lightbulb' },
+            { id: 'restricted', label: 'Restricted', icon: 'shield-alert', color: 'text-accent-red' }
+        ];
+
+        // --- INIT ---
+        window.addEventListener('DOMContentLoaded', () => {
+            renderCategories();
+            renderProjects();
+            lucide.createIcons();
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            // Search Listeners
+            const handleSearch = (e) => {
+                searchQuery = e.target.value.toLowerCase();
+                renderProjects();
+            };
+            document.getElementById('desktopSearch').addEventListener('input', handleSearch);
+            document.getElementById('mobileSearchInput').addEventListener('input', handleSearch);
+
+            // Mobile Search Toggle
+            document.getElementById('mobileSearchToggle').addEventListener('click', () => {
+                const bar = document.getElementById('mobileSearchBar');
+                bar.classList.toggle('hidden');
+                if(!bar.classList.contains('hidden')) {
+                    document.getElementById('mobileSearchInput').focus();
+                }
+            });
+
+            // Age Gate Confirmation
+            document.getElementById('confirmAgeBtn').addEventListener('click', () => {
+                localStorage.setItem('isAdult', 'true');
+                ageModal.close();
+                if(targetRestrictedUrl) window.open(targetRestrictedUrl, '_blank');
+            });
+        });
+
+        // --- RENDERING ---
+        function renderCategories() {
+            categoryContainer.innerHTML = categories.map(cat => `
+                <button onclick="setFilter('${cat.id}')" 
+                    class="category-btn whitespace-nowrap px-4 py-2 rounded-full text-sm font-semibold transition-all border flex items-center gap-2
+                    ${currentFilter === cat.id 
+                        ? 'bg-brand text-white border-brand shadow-lg shadow-brand/20' 
+                        : 'bg-white text-gray-500 border-gray-100 hover:bg-gray-50 hover:text-ink'
+                    }">
+                    <i data-lucide="${cat.icon}" class="w-4 h-4 ${cat.color || ''}"></i>
+                    ${cat.label}
+                </button>
+            `).join('');
+            lucide.createIcons();
+        }
+
+        function renderProjects() {
+            // Filter Data
+            const filtered = projects.filter(item => {
+                const matchesCat = currentFilter === 'all' || item.cat === currentFilter;
+                const matchesSearch = item.title.toLowerCase().includes(searchQuery) || 
+                                      item.desc.toLowerCase().includes(searchQuery) ||
+                                      item.tags.includes(searchQuery);
+                return matchesCat && matchesSearch;
+            });
+
+            // Update UI Counters
+            countSpan.textContent = `${filtered.length} App${filtered.length !== 1 ? 's' : ''}`;
+            titleEl.textContent = categories.find(c => c.id === currentFilter).label;
+
+            // Handle Empty State
+            if (filtered.length === 0) {
+                grid.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                emptyState.classList.add('flex');
+                return;
+            } else {
+                emptyState.classList.add('hidden');
+                emptyState.classList.remove('flex');
+            }
+
+            // Generate HTML
+            grid.innerHTML = filtered.map((item, index) => {
+                // Staggered animation delay
+                const delay = index * 50; 
+                
+                // Color coding for cards based on category
+                let badgeClass = "bg-gray-100 text-gray-600";
+                if(item.badge === "WIP" || item.badge === "Ongoing") badgeClass = "bg-accent-amber/20 text-yellow-700";
+                if(item.badge === "Beta") badgeClass = "bg-blue-100 text-brand";
+
+                return `
+                <a href="${item.url}" 
+                   target="_blank" 
+                   rel="noopener"
+                   onclick="return handleClick(event, '${item.url}', ${item.restricted || false})"
+                   class="group relative flex flex-col p-6 bg-white rounded-2xl border border-gray-100 shadow-glass hover:shadow-glass-hover transition-all duration-300 hover:-translate-y-1 animate-fade-in"
+                   style="animation-delay: ${delay}ms">
+                    
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="w-12 h-12 flex items-center justify-center text-3xl bg-gray-50 rounded-xl group-hover:scale-110 transition-transform duration-300">
+                            ${item.icon}
+                        </div>
+                        ${item.badge ? `<span class="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-md ${badgeClass}">${item.badge}</span>` : ''}
+                        ${item.restricted ? `<span class="text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-md bg-accent-red/10 text-accent-red flex items-center gap-1"><i data-lucide="lock" class="w-3 h-3"></i> 18+</span>` : ''}
+                    </div>
+
+                    <h3 class="text-lg font-bold text-ink mb-1 group-hover:text-brand transition-colors">${item.title}</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed mb-4 flex-grow">${item.desc}</p>
+
+                    <div class="flex flex-wrap gap-2 mt-auto">
+                        ${item.tags.split(' ').slice(0, 3).map(tag => 
+                            `<span class="text-xs text-gray-400 bg-gray-50 px-2 py-1 rounded-md">#${tag}</span>`
+                        ).join('')}
+                    </div>
+                    
+                    <div class="absolute bottom-6 right-6 opacity-0 transform translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 text-brand">
+                        <i data-lucide="external-link" class="w-5 h-5"></i>
+                    </div>
+                </a>
+                `;
+            }).join('');
+            
+            lucide.createIcons();
+        }
+
+        // --- ACTIONS ---
+        function setFilter(cat) {
+            currentFilter = cat;
+            renderCategories(); // Re-render buttons to update active state
+            renderProjects();
+        }
+
+        function resetFilters() {
+            currentFilter = 'all';
+            searchQuery = '';
+            document.getElementById('desktopSearch').value = '';
+            document.getElementById('mobileSearchInput').value = '';
+            document.getElementById('mobileSearchBar').classList.add('hidden');
+            renderCategories();
+            renderProjects();
+        }
+
+        function handleClick(e, url, isRestricted) {
+            if (!isRestricted) return true; // Allow normal navigation
+
+            e.preventDefault(); // Stop navigation
+            
+            // Check if user already verified in this session
+            if (localStorage.getItem('isAdult') === 'true') {
+                window.open(url, '_blank');
+                return false;
+            }
+
+            // Show Modal
+            targetRestrictedUrl = url;
+            ageModal.showModal();
+            return false;
+        }
+    </script>
 </body>
 </html>
