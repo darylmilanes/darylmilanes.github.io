@@ -270,6 +270,9 @@
     <script>
         // --- DATA SOURCE ---
         const projects = [
+            { title: "TrainX", desc: "Centralized request management dashboard.", url: "https://darylmilanes.com/trainx", cat: "productivity", icon: "📝", tags: "dashboard workflow ops", badge: "Ongoing"},
+            { title: "Loggr", desc: "Streamline daily work logs.", url: "https://darylmilanes.com/loggr", cat: "productivity", icon: "🕒", tags: "logging productivity logs", badge: "Ongoing"},
+            
             // CATEGORY: PRODUCTIVITY (10)
             { title: "AirLink", desc: "Cross-platform calendar app.", url: "https://darylmilanes.com/airlink", cat: "productivity", icon: "🗓️", tags: "calendar time" },
             { title: "EveryDate", desc: "Calendar and reminders app in one.", url: "https://darylmilanes.com/EveryDate/", cat: "productivity", icon: "📅", tags: "tasks reminders" },
@@ -316,10 +319,7 @@
             { title: "Beyond Aware", desc: "Digital awareness guide.", url: "https://darylmilanes.com/beyond-aware/", cat: "insights", icon: "💡", tags: "guide" },
             { title: "Ang Batang Pinoy", desc: "Digital guide for Filipino kids.", url: "https://darylmilanes.com/ang-batang-pinoy/", cat: "insights", icon: "🇵🇭", tags: "kids culture" },
             { title: "HIV Awareness", desc: "Digital guide for HIV info.", url: "https://darylmilanes.com/HIVawareness/", cat: "insights", icon: "🎗️", tags: "health" },
-            { title: "Sustainability", desc: "Digital guide for eco-living.", url: "https://darylmilanes.com/sustainability/", cat: "insights", icon: "🌱", tags: "eco" },
-
-            // CATEGORY: RESTRICTED (1)
-            { title: "The Sunday Strip", desc: "Rated 18 BL stories.", url: "https://darylmilanes.com/thesundaystrip/", cat: "restricted", icon: "🔞", tags: "stories adult", restricted: true }
+            { title: "Sustainability", desc: "Digital guide for eco-living.", url: "https://darylmilanes.com/sustainability/", cat: "insights", icon: "🌱", tags: "eco" }
         ];
 
         // --- STATE ---
@@ -342,7 +342,6 @@
             { id: 'education', label: 'Education', icon: 'graduation-cap' },
             { id: 'lifestyle', label: 'Lifestyle', icon: 'coffee' },
             { id: 'insights', label: 'Insights', icon: 'lightbulb' },
-            { id: 'restricted', label: 'Restricted', icon: 'shield-alert', color: 'text-accent-red' }
         ];
 
         // --- INIT ---
