@@ -548,6 +548,46 @@
         /* --- 13. ANIMATIONS --- */
         .reveal { opacity: 0; transform: translateY(30px); transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
         .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        /* Fix for clicking invisible items */
+        .reveal:not(.active) { pointer-events: none; }
+
+        /* --- 14. BACK TO TOP BUTTON --- */
+        #backToTop {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        #backToTop.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        #backToTop:hover {
+            background: var(--accent);
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(217, 119, 6, 0.3); /* Bronze glow */
+        }
 
     </style>
 </head>
@@ -940,7 +980,8 @@
             </div>
 
             <!-- Grid -->
-            <div id="projectsGrid" class="projects-grid reveal">
+            <!-- REMOVED 'reveal' class from container to fix mobile visibility issues -->
+            <div id="projectsGrid" class="projects-grid">
                 <!-- Injected by JS -->
             </div>
 
@@ -980,6 +1021,11 @@
             <p style="opacity: 0.6; font-size: 0.9rem;">&copy; 2026 Daryl John Gumabon Milanes. All rights reserved.</p>
         </div>
     </footer>
+    
+    <!-- BACK TO TOP BUTTON -->
+    <button id="backToTop" aria-label="Back to Top">
+        <i class="ph ph-arrow-up"></i>
+    </button>
 
     <!-- Age Verification Modal -->
     <dialog id="ageModal">
@@ -997,6 +1043,19 @@
     </dialog>
 
     <script>
+        // --- 1. MOVED OBSERVER LOGIC TO TOP (Critical Fix) ---
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px"
+        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("active");
+                }
+            });
+        }, observerOptions);
+
         // --- DATA & LOGIC FOR PROJECTS ---
         const projects = [
             { title: "TrainX", desc: "Centralized request management dashboard.", url: "https://darylmilanes.com/trainx", cat: "productivity", icon: "📝", tags: "dashboard workflow ops", badge: "Ongoing"},
@@ -1085,9 +1144,6 @@
                 return matchesCat && matchesSearch;
             });
 
-            // Update Section Title Count
-            // optional: you could update the "All Projects" text to show count, e.g. "Productivity (10)"
-
             if (filtered.length === 0) {
                 grid.innerHTML = '';
                 emptyState.style.display = 'block';
@@ -1098,11 +1154,11 @@
                     if(item.badge === "WIP" || item.badge === "Ongoing") badgeHTML = `<span class="badge badge-ongoing">${item.badge}</span>`;
                     if(item.badge === "Beta") badgeHTML = `<span class="badge badge-beta">${item.badge}</span>`;
                     
-                    // Age restriction simulation (if any items were marked restricted: true in data)
                     let restrictedHTML = item.restricted ? `<span class="badge badge-18"><i class="ph ph-lock-key"></i> 18+</span>` : '';
 
+                    // ADDED 'reveal' class to individual cards for better mobile animation
                     return `
-                    <a href="${item.url}" target="_blank" onclick="return handleProjectClick(event, '${item.url}', ${item.restricted || false})" class="project-card">
+                    <a href="${item.url}" target="_blank" onclick="return handleProjectClick(event, '${item.url}', ${item.restricted || false})" class="project-card reveal">
                         <div class="project-header">
                             <div class="project-icon-box">${item.icon}</div>
                             <div class="project-badges">${badgeHTML}${restrictedHTML}</div>
@@ -1115,6 +1171,10 @@
                     </a>
                     `;
                 }).join('');
+                
+                // CRITICAL: Re-attach observer to new card elements
+                const newCards = grid.querySelectorAll('.reveal');
+                newCards.forEach(el => observer.observe(el));
             }
         }
 
@@ -1157,6 +1217,9 @@
             renderCategories();
             renderProjects();
             
+            // Initialize existing reveal elements (sections, headers, etc)
+            document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
             // Project Search Listener
             document.getElementById('projectSearch').addEventListener('input', (e) => {
                 searchQuery = e.target.value.toLowerCase();
@@ -1168,6 +1231,24 @@
                 localStorage.setItem('isAdult', 'true');
                 document.getElementById('ageModal').close();
                 if(targetRestrictedUrl) window.open(targetRestrictedUrl, '_blank');
+            });
+
+            // Back to Top Logic
+            const backToTopBtn = document.getElementById('backToTop');
+            window.addEventListener('scroll', () => {
+                // Show button after scrolling down 500px (past hero usually)
+                if (window.scrollY > 500) {
+                    backToTopBtn.classList.add('visible');
+                } else {
+                    backToTopBtn.classList.remove('visible');
+                }
+            });
+
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
             });
         });
 
@@ -1202,19 +1283,8 @@
         }
         document.addEventListener('DOMContentLoaded', type);
 
-        // 3. Scroll Reveal Logic
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: "0px 0px -50px 0px"
-        };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("active");
-                }
-            });
-        }, observerOptions);
-        document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+        // 3. Scroll Reveal Logic (Observer is now defined at top)
+        // (Removed duplicate observer setup here to prevent errors)
 
         // 4. Nav Active State Logic (ScrollSpy)
         const sections = document.querySelectorAll('section');
@@ -1228,7 +1298,7 @@
                     if (activeLink) activeLink.classList.add('active');
                 }
             });
-        }, { threshold: 0.2 }); // Lowered threshold slightly to catch larger sections better
+        }, { threshold: 0.2 }); 
         sections.forEach(section => scrollSpy.observe(section));
     </script>
 
