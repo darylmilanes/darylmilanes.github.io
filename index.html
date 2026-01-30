@@ -573,7 +573,7 @@
             opacity: 0;
             visibility: hidden;
             transform: translateY(20px);
-            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         #backToTop.visible {
@@ -587,6 +587,55 @@
             border-color: var(--primary);
             transform: translateY(-5px);
             box-shadow: 0 10px 20px rgba(217, 119, 6, 0.3); /* Bronze glow */
+        }
+
+        /* OPTION 3: GYRO SPIN ANIMATION */
+        .gyro-spin {
+            /* 1. Hide the static border so the pseudo-element takes over */
+            border-color: transparent !important;
+            /* 2. Shrink the core button to imply aerodynamic focus */
+            transform: scale(0.85) !important;
+            /* 3. Keep background Navy */
+            background: var(--primary) !important;
+            box-shadow: none !important;
+        }
+
+        /* The Detached Spinning Ring */
+        .gyro-spin::before {
+            content: '';
+            position: absolute;
+            /* Negative inset makes it larger than the button (detached look) */
+            inset: -6px; 
+            border-radius: 50%;
+            border: 3px solid var(--accent);
+            /* Create gaps in the ring for the "Gyro" look */
+            border-left-color: transparent;
+            border-right-color: transparent;
+            /* Fast spin */
+            animation: gyroRotate 0.6s linear infinite;
+            box-shadow: 0 0 10px rgba(217, 119, 6, 0.4);
+        }
+
+        /* The Laser Icon Transformation */
+        .gyro-spin i {
+            animation: laserFocus 0.6s ease-in-out forwards;
+        }
+
+        @keyframes gyroRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes laserFocus {
+            0% { transform: scale(1); }
+            20% { transform: scale(1.2); } /* Anticipation */
+            50% { 
+                /* Turns into a thin beam pointing up */
+                transform: scale(0.4, 1.4) translateY(-2px); 
+                color: var(--accent);
+                text-shadow: 0 0 5px var(--accent);
+            } 
+            100% { transform: scale(1); color: white; }
         }
 
     </style>
@@ -1241,14 +1290,25 @@
                     backToTopBtn.classList.add('visible');
                 } else {
                     backToTopBtn.classList.remove('visible');
+                    // Reset animation if user scrolls back up manually
+                    backToTopBtn.classList.remove('gyro-spin');
                 }
             });
 
             backToTopBtn.addEventListener('click', () => {
+                // 1. Add Animation Class (Option 3: Gyro Spin)
+                backToTopBtn.classList.add('gyro-spin');
+
+                // 2. Perform Smooth Scroll
                 window.scrollTo({
                     top: 0,
                     behavior: 'smooth'
                 });
+
+                // 3. Remove class after animation finishes (600ms matches CSS)
+                setTimeout(() => {
+                    backToTopBtn.classList.remove('gyro-spin');
+                }, 600);
             });
         });
 
